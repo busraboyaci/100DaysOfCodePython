@@ -52,18 +52,22 @@ def resource_subtract(machine_resource, user_resource):
     return left_resources
 
 
+
+
 def coffee_coast(user_input):
     cost = MENU[user_input]["cost"]
     coffee_cost = round((calculated_money - cost), 2)
-    if coffee_cost >= cost:
+    if cost <= calculated_money:
         print(f"Here is ${coffee_cost} in change.")
-        print(f"Here is your {users_input} ☕️. Enjoy!")
         return coffee_cost
     else:
         print("Sorry that's not enough money. Money refunded.")
 
 
-
+def make_coffee(drink_name, order_ingredients):
+    for item in order_ingredients:
+        resources[item] -= order_ingredients[item]
+    print(f"Here is your {drink_name} ☕️. Enjoy!")
 
 should_continue = True
 while should_continue:
@@ -74,8 +78,8 @@ while should_continue:
         should_continue = False
     elif users_input == "report":
         print(f"Water: {resources['water']} ml")
-        print(f"Milk: {resources['milk']} ml")
         print(f"Coffee: {resources['coffee']} ml")
+        print(f"Milk: {resources['milk']} ml")
     else:
         if control_resource(MENU[users_input]["ingredients"], resources):
             print("Please insert coins.")
@@ -86,4 +90,5 @@ while should_continue:
             calculated_money = calculate(quarters, dimes, nickles, pennies)
             calculated_money = calculate(quarters, dimes, nickles, pennies)
             coffee_coast(users_input)
-            resources = resource_subtract(resources, MENU[users_input]["ingredients"])
+            make_coffee(users_input, MENU[users_input]["ingredients"])
+
