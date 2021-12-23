@@ -36,11 +36,11 @@ def calculate(quarter, dime, nickle, pennie):
 
 
 def control_resource(user_resources, machine_resource):
-    for key in machine_resource:
-        if key in user_resources and user_resources[key] <= machine_resource[key]:
-            return True
-        else:
+    for key in user_resources:
+        if user_resources[key] > machine_resource[key]:
+            print(f"Sorry there is not enough {key}.")
             return False
+        return True
 
 
 def resource_subtract(machine_resource, user_resource):
@@ -55,41 +55,35 @@ def resource_subtract(machine_resource, user_resource):
 def coffee_coast(user_input):
     cost = MENU[user_input]["cost"]
     coffee_cost = round((calculated_money - cost), 2)
-    return coffee_cost
+    if coffee_cost >= cost:
+        print(f"Here is ${coffee_cost} in change.")
+        print(f"Here is your {users_input} ☕️. Enjoy!")
+        return coffee_cost
+    else:
+        print("Sorry that's not enough money. Money refunded.")
 
 
-def make_coffee():
-    print(f"Here is ${coffee_coast(users_input)} in change.")
-    print(f"Here is your {users_input} ☕️. Enjoy!")
 
 
-# TODO: How to get the user drink ingredient and computers written
-
-resource_control = True
 should_continue = True
 while should_continue:
 
     users_input = input("What would you like? (espresso/latte/cappuccino): ").lower()
 
-    user_resource = MENU[users_input]["ingredients"]
-    resource_control = control_resource(user_resource, resources)
-
-    if resource_control:
-        print("Please insert coins.")
-        quarters = float(input("how many quarters?: "))
-        dimes = float(input("how many dimes?: "))
-        nickles = float(input("how many nickles?: "))
-        pennies = float(input("how many pennies?: "))
-    elif not resource_control:
-        for key in resources:
-            if resources[key] < user_resource[key]:
-                should_continue = False
-        print(f"Sorry there is not enough {key}.")
-
-    calculated_money = calculate(quarters, dimes, nickles, pennies)
-    # TODO: 1.a. Check the user’s input to decide what to do next.
-    if resource_control:
-        coffee_coast(users_input)
-        make_coffee()
-
-    resources = resource_subtract(resources, user_resource)
+    if users_input == "off":
+        should_continue = False
+    elif users_input == "report":
+        print(f"Water: {resources['water']} ml")
+        print(f"Milk: {resources['milk']} ml")
+        print(f"Coffee: {resources['coffee']} ml")
+    else:
+        if control_resource(MENU[users_input]["ingredients"], resources):
+            print("Please insert coins.")
+            quarters = float(input("how many quarters?: "))
+            dimes = float(input("how many dimes?: "))
+            nickles = float(input("how many nickles?: "))
+            pennies = float(input("how many pennies?: "))
+            calculated_money = calculate(quarters, dimes, nickles, pennies)
+            calculated_money = calculate(quarters, dimes, nickles, pennies)
+            coffee_coast(users_input)
+            resources = resource_subtract(resources, MENU[users_input]["ingredients"])
