@@ -33,8 +33,9 @@ def draw_shape(number_of_side):
         tim.right(angle)
 
 
-for number_of_shape in range(3,11):
+for number_of_shape in range(3, 11):
     draw_shape(number_of_shape)
+
 
 
 Screen().exitonclick()
