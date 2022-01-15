@@ -11,3 +11,7 @@ It's Turtle module from python package...
 
 ## The video of how to work game is below.
 
+
+https://user-images.githubusercontent.com/46091390/149627432-a3ff7ef6-f6c8-4057-ac6f-fec134621d45.mov
+
+
