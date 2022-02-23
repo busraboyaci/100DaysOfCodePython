@@ -14,8 +14,3 @@ with open("./Input/Letters/starting_letter.txt") as letter_file:
         with open(f"./Output/ReadyToSend/letter_for{stripped_name}", mode="w") as completed_letter:
             completed_letter.write(new_letter)
 
-
-#Save the letters in the folder "ReadyToSend".
-#Hint1: This method will help you: https://www.w3schools.com/python/ref_file_readlines.asp
-    #Hint2: This method will also help you: https://www.w3schools.com/python/ref_string_replace.asp
-        #Hint3: THis method will help you: https://www.w3schools.com/python/ref_string_strip.asp
