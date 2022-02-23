@@ -4,10 +4,8 @@ trying to develop python programing skills in 100 day
 It's Turtle module from python package...
 
 ## Mail Merge Project Description
-#### The goal of the project rewrite the example letter personally. 
+###### The goal of the project rewrite the example letter personally. 
 
-##### Invited Names File: They are the lists of names to be added.
- 
 
 
 | Invited Names File | Starting Letters File | Example txt File | Before The Run Project Output files | After The Run Project Output Files |
