@@ -10,3 +10,6 @@ This project uses tkinter module.
 
 
 ### The video of how to Pomodoro App working is below.
+
+https://user-images.githubusercontent.com/46091390/155595072-45ac5a3e-dbdd-48ef-8d5e-d400b456bdf5.mov
+
